@@ -1,0 +1,57 @@
+# Resumo e Análise do Artigo  
+**On the Criteria to Be Used in Decomposing Systems into Modules – David Parnas (1972)**
+
+## Contexto
+Antes do artigo de Parnas, a prática mais comum de modularização era dividir sistemas de acordo com os **passos do processamento**, quase como uma tradução direta de fluxogramas para código.  
+Esse método gerava módulos fortemente dependentes de representações internas compartilhadas, o que dificultava:
+- **Mudanças futuras** no sistema;  
+- **Entendimento** da estrutura de código;  
+- **Evolução e manutenção** a longo prazo.
+
+## Proposta de Parnas
+Parnas introduz o conceito de **ocultamento de informações (information hiding)** como critério de modularização.  
+A ideia central é:  
+> Cada módulo deve **esconder uma decisão de projeto suscetível a mudanças**.
+
+Exemplos de decisões que podem ser escondidas em módulos:
+- Formato de entrada de dados;  
+- Estrutura de armazenamento em memória;  
+- Organização de tabelas;  
+- Algoritmos internos específicos.
+
+Assim, **se uma decisão mudar, apenas o módulo responsável é afetado**, preservando a estabilidade dos demais.
+
+## Exemplo: Problema do KWIC
+Parnas compara duas formas de modularização:
+1. **Convencional (fases de processamento)**  
+   - Entrada → Circular Shift → Ordenação → Saída.  
+   - Estrutura rígida e dependente de representações internas.  
+
+2. **Baseada em ocultamento de informações**  
+   - Módulo de armazenamento de linhas;  
+   - Módulo de circular shift;  
+   - Módulo de ordenação;  
+   - Módulo de saída.  
+
+A segunda abordagem demonstrou **maior flexibilidade**, permitindo alterações localizadas e facilitando o trabalho independente entre equipes.
+
+## Contribuições e Impacto
+- Mostra que **o código executável pode ser igual em ambas as decomposições**, mas o **projeto do sistema muda radicalmente a manutenibilidade e compreensão**.  
+- Destaca que modularização não é apenas sobre **eficiência de execução**, mas sobre **eficiência no ciclo de vida do software**.  
+- Antecipou conceitos modernos da Engenharia de Software:
+  - **Baixo acoplamento e alta coesão**;  
+  - **Encapsulamento**;  
+  - **Design orientado a objetos**;  
+  - **Arquiteturas baseadas em componentes**;  
+  - **SOA (Service-Oriented Architecture) e Microservices**.  
+
+Relação com princípios posteriores:  
+- **SOLID** – especialmente:  
+  - *Single Responsibility Principle* (cada módulo com uma responsabilidade clara);  
+  - *Open-Closed Principle* (módulos abertos para extensão, mas fechados para modificação).
+
+## Conclusão
+O artigo de Parnas mostra que:
+- **Dividir em funções** não é suficiente para uma boa modularização.  
+- O essencial é **definir módulos em torno de decisões de projeto que podem mudar**.  
+- Esse pensamento é um dos pilares da **Engenharia de Software moderna**, garantindo sistemas **compreensíveis, evolutivos e gerenciáveis** ao longo do tempo.
